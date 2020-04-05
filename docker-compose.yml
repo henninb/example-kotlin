@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  example:
+    build:
+      context: ./
+      args:
+       - APP=example
+       - TIMEZONE='America/Chicago'
+       - USERNAME=henninb
+      dockerfile: Dockerfile
+    container_name: example
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./logs:/opt/example/logs
+      - ./ssl:/opt/example/ssl
+    env_file:
+      - env
+      - env.secrets
+    extra_hosts:
+      - "hornsup:192.168.100.97"
