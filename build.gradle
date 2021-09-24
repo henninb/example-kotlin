@@ -68,6 +68,10 @@ dependencies {
     implementation('com.oracle:ojdbc7:12.1.0.2')
     implementation("org.springframework.data:spring-data-oracle:1.2.1.RELEASE")
 
+
+    // https://mvnrepository.com/artifact/com.github.seregamorph/morejdbc
+    implementation 'com.github.seregamorph:morejdbc:1.0'
+
     //json parser
     implementation("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
 
