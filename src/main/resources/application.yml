@@ -1,6 +1,10 @@
 spring:
   application:
     name: example
+  datasource:
+    url: jdbc:oracle:thin:@ed90-scan1.target.com:1521/DDDTST04
+    username: dist
+    password:
   profiles:
     active: local
 management:
