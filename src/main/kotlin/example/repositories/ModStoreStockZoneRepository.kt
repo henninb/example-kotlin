@@ -27,22 +27,15 @@ open class ModStoreStockZoneRepository {
 
     fun run() {
         try {
-//            val typeMap = jdbcTemplate.dataSource.connection.typeMap
-//            typeMap[PtsItem._SQL_RECORD_NAME] = PtsItem::class.java
-//            jdbcTemplate.dataSource.connection.typeMap = typeMap
-           // log.info("status of jdbc template: ${jdbcTemplate == null}")
-
             simpleJdbcCall = SimpleJdbcCall(jdbcTemplate)
-                .withSchemaName("DIST")
-//                .withCatalogName("dps_pack_prcs_ng_pkg")
-                .withProcedureName("dpp_get_mod_ssz")
+                .withSchemaName("public")
+//                .withCatalogName("catelog_name")
+                .withProcedureName("proc_name")
 
-            //log.info("status of simpleJdbcCall: ${simpleJdbcCall == null}")
-            //log.info("${simpleJdbcCall == null} v0")
             simpleJdbcCall.declareParameters(
-                SqlParameter("o_sql_error_code", Types.NUMERIC),
-                SqlParameter("o_brkpk_module_i", Types.NUMERIC),
-                SqlParameter("o_store_stk_zone_c", Types.VARCHAR)
+                SqlParameter("parm1", Types.NUMERIC),
+                SqlParameter("parm2", Types.NUMERIC),
+                SqlParameter("parm3", Types.VARCHAR)
             )
 
         } catch (e: SQLException) {
@@ -53,48 +46,18 @@ open class ModStoreStockZoneRepository {
 
 
     fun callOverPackContainerSP() {
-//        run()
-//        val resultMap: Map<String, Any>
-////        log.info("${simpleJdbcCall == null} v1")
-//        val paramMap = MapSqlParameterSource()
-//            .addValue("o_sql_error_code", 1)
-//            .addValue("o_brkpk_module_i", 100)
-//            .addValue("o_store_stk_zone_c", "015")
-//        //log.info("${simpleJdbcCall == null} v2")
-//        resultMap =simpleJdbcCall.execute(paramMap)
-//        log.info("result ${resultMap.size}")
 
 
         val theOut = Out.of(INTEGER)
 
-        jdbcTemplate.execute(call("dpp_get_mod_ssz")
-            .inOut("o_sql_error_code", 0, theOut)
-            .`in`("o_brkpk_module_i", 1000L)
-            .`in`("o_store_stk_zone_c", "015")
+        jdbcTemplate.execute(call("proc_name")
+            .inOut("parm1", 0, theOut)
+            .`in`("parm2", 1000L)
+            .`in`("parm3", "015")
             )
 
         log.info(theOut.get().toString())
 
-
        // String errString = (String) query.getOutputParameterValue("error_msg");
-
-       //return callOverPackContainer(message.getLpnId(), paramMap)
     }
-
-
-//    @NotNull
-//    private fun callOverPackContainer(lpnId: String, paramMap: MapSqlParameterSource): OverpackContainerResponse? {
-//        val resultMap: Map<String, Any>
-//        LOGGER.info("populated the values")
-//        resultMap = simpleJdbcCall.execute(paramMap)
-//        LOGGER.info("sql called.")
-//        val responseMessage = OverpackContainerResponse()
-//        responseMessage.setLpnId(lpnId)
-//        responseMessage.setOpdNumber((resultMap["ovrpk_ctnr_i_out"] as String?)!!.trim { it <= ' ' })
-//        responseMessage.setLabelData(readLabel(resultMap["ovrpk_lbl_data_out"]))
-//        responseMessage.setBypassFlag((resultMap["prnt_byp_f_out"] as String?)!!.trim { it <= ' ' })
-//        LOGGER.info("Response Message: " + responseMessage.toString())
-//        return responseMessage
-//    }
-
 }

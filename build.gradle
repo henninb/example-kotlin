@@ -19,11 +19,7 @@ apply from: 'test.gradle'
 
 repositories {
     mavenCentral()
-    maven { url "https://binrepo.target.com/artifactory/dms" }
     google()
-//    flatDir {
-//        dirs 'libs'
-//    }
 }
 
 compileKotlin {
@@ -64,7 +60,7 @@ dependencies {
     //h2 database
     runtimeOnly("com.h2database:h2:${h2Version}")
 
-    // oracle
+//    // oracle
     implementation('com.oracle:ojdbc7:12.1.0.2')
     implementation("org.springframework.data:spring-data-oracle:1.2.1.RELEASE")
 

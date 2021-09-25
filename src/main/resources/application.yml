@@ -2,8 +2,8 @@ spring:
   application:
     name: example
   datasource:
-    url: jdbc:oracle:thin:@ed90-scan1.target.com:1521/DDDTST04
-    username: dist
+    url: jdbc:oracle:thin:@server:1521/DB_NAME
+    username:
     password:
   profiles:
     active: local

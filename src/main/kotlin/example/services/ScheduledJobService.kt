@@ -13,6 +13,3 @@ open class ScheduledJobService @Autowired constructor(private val modStoreStockZ
         modStoreStockZoneRepository.callOverPackContainerSP()
     }
 }
-
-
-//https://git.target.com/Distribution-3D/dps-fortna/blob/master/src/main/java/tgt/dps/fortna/repository/OverpackContainerRepository.java
