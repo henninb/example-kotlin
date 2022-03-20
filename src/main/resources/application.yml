@@ -2,9 +2,9 @@ spring:
   application:
     name: example
   datasource:
-    url: jdbc:oracle:thin:@server:1521/DB_NAME
-    username:
-    password:
+    url: jdbc:postgresql://localhost:5432/finance_db
+    username: henninb
+    password: monday1
   profiles:
     active: local
   jpa:

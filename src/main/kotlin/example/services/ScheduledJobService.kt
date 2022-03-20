@@ -10,6 +10,6 @@ open class ScheduledJobService @Autowired constructor(private val modStoreStockZ
 
     @Scheduled(fixedDelay = 25000)
     fun runJob()  {
-        modStoreStockZoneRepository.callOverPackContainerSP()
+        //modStoreStockZoneRepository.callOverPackContainerSP()
     }
 }
