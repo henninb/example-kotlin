@@ -24,7 +24,7 @@ fi
 # "$OSTYPE" == "darwin"*
 if [ "$OS" = "Linux Mint" ] || [ "$OS" = "Ubuntu" ]; then
   HOST_IP=$(hostname -I | awk '{print $1}')
-elif [ "$OS" = "Arch Linux" ]; then
+elif [ "$OS" = "Arch Linux" ] || [ "$OS" = "ArcoLinux" ]; then
   HOST_IP=$(hostname -i | awk '{print $1}')
 elif [ "$OS" = "Fedora" ]; then
   HOST_IP=192.168.100.130
@@ -59,10 +59,8 @@ if ! docker build -t $APP --build-arg TIMEZONE=${TIMEZONE} --build-arg APP=${APP
   exit 1
 fi
 
-#echo docker run -it -h ${APP} --add-host hornsup:$HOST_IP --env-file env.secrets --env-file env -v $HOST_BASEDIR/logs:$GUEST_BASEDIR/logs -v $HOST_BASEDIR/ssl:$GUEST_BASEDIR/ssl -v $HOST_BASEDIR/json_in:$GUEST_BASEDIR/json_in -v $HOST_BASEDIR/config:$GUEST_BASEDIR/config -v $HOST_BASEDIR/excel_in:$GUEST_BASEDIR/excel_in --rm ${APP} bash
-docker run -it -h ${APP} --add-host hornsup:$HOST_IP -p 8082:8080 --env-file env.secrets --env-file env -v $HOST_BASEDIR/logs:$GUEST_BASEDIR/logs -v $HOST_BASEDIR/ssl:$GUEST_BASEDIR/ssl -v $HOST_BASEDIR/json_in:$GUEST_BASEDIR/json_in -v $HOST_BASEDIR/config:$GUEST_BASEDIR/config -v $HOST_BASEDIR/excel_in:$GUEST_BASEDIR/excel_in --rm --name ${APP} ${APP}
-if [ $? -ne 0 ]; then
-  echo "docker run failed."
+if docker run -it -h "${APP}" --add-host "hornsup:$HOST_IP" -p 8082:8080 --env-file env.secrets --env-file env -v "$HOST_BASEDIR/logs:$GUEST_BASEDIR/logs" -v "$HOST_BASEDIR/ssl:$GUEST_BASEDIR/ssl" -v "$HOST_BASEDIR/json_in:$GUEST_BASEDIR/json_in" -v "$HOST_BASEDIR/config:$GUEST_BASEDIR/config" -v "$HOST_BASEDIR/excel_in:$GUEST_BASEDIR/excel_in" --rm --name "${APP}" "${APP}"; then
+  echo "docker run failed"
   exit 1
 fi
 
