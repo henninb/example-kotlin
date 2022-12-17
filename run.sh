@@ -11,10 +11,12 @@ TIMEZONE='America/Chicago'
 USERNAME=henninb
 HOST_BASEDIR=$(pwd)
 GUEST_BASEDIR=/opt/${APP}
+SPRING_PROFILES_ACTIVE=prod
 
 export APP
 export USERNAME
 export TIMEZONE
+export SPRING_PROFILES_ACTIVE
 
 if [ "$ENV" = "prod" ]; then
   echo prod

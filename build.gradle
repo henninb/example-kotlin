@@ -62,7 +62,7 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
 
     //h2 database
-    runtimeOnly("com.h2database:h2:${h2Version}")
+    //runtimeOnly("com.h2database:h2:${h2Version}")
 
 //    // oracle
     // implementation('com.oracle:ojdbc7:12.1.0.2')
@@ -70,14 +70,13 @@ dependencies {
 
 
     // https://mvnrepository.com/artifact/com.github.seregamorph/morejdbc
-    implementation 'com.github.seregamorph:morejdbc:1.0'
+    implementation('com.github.seregamorph:morejdbc:1.0')
 
     //json parser
     implementation("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
 
     //hibernate
     implementation("org.hibernate:hibernate-core:${hibernateVersion}")
-    //implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:${hibernateJpaVersion}")
 
     //Logging
     implementation("ch.qos.logback:logback-classic:${logbackVersion}")

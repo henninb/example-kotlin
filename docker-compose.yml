@@ -7,6 +7,7 @@ services:
        - APP=example
        - TIMEZONE='America/Chicago'
        - USERNAME=henninb
+       - SPRING_PROFILES_ACTIVE=prod
       dockerfile: Dockerfile
     container_name: example
     ports:
@@ -18,4 +19,4 @@ services:
       - env
       - env.secrets
     extra_hosts:
-      - "hornsup:192.168.100.97"
+      - "hornsup:192.168.10.192"
