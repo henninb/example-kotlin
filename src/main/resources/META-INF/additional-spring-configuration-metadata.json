@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "custom.project.credit-accounts",
+      "type": "java.lang.String",
+      "description": "Description for custom.project.credit-accounts."
+  }
+] }

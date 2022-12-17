@@ -23,7 +23,7 @@ repositories {
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = '11'
+    kotlinOptions.jvmTarget = '17'
 }
 
 sourceSets {
@@ -46,7 +46,11 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${jacksonVersion}")
 
     //Groovy
-    implementation("org.codehaus.groovy:groovy-all:${groovyVersion}")
+    //implementation("org.codehaus.groovy:groovy-all:${groovyVersion}")
+
+    //Groovy
+    //implementation("org.codehaus.groovy:groovy-all:${groovyVersion}")
+    implementation("org.apache.groovy:groovy:${groovyVersion}")
 
     //Spring Boot
     implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
@@ -54,7 +58,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
 
-    //postgres
+    //postgresql
     runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
 
     //h2 database
@@ -73,7 +77,7 @@ dependencies {
 
     //hibernate
     implementation("org.hibernate:hibernate-core:${hibernateVersion}")
-    implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:${hibernateJpaVersion}")
+    //implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:${hibernateJpaVersion}")
 
     //Logging
     implementation("ch.qos.logback:logback-classic:${logbackVersion}")
