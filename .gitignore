@@ -30,6 +30,8 @@ ssl/
 *.der
 *.ts
 *.secrets
+*.crt
+*.key
 
 ### others ###
 .settings/

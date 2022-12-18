@@ -1,15 +1,15 @@
 server:
   tomcat:
     connection-timeout: 10s
-  port: 8484
-#  ssl:
-#    key-store: classpath:hornsup-raspi-finance-keystore.p12
-#    key-store-password: ${SSL_KEY_STORE_PASSWORD}
-#    key-store-type: pkcs12
-#    key-alias: hornsup
-#    key-password: ${SSL_KEY_PASSWORD}
-#    enabled: ${SSL_ENABLED}
-#    enabled-protocols: TLSv1.2
+  port: 8080
+  ssl:
+    key-store: classpath:hornsup-example-keystore.p12
+    key-store-password: monday1
+    key-store-type: pkcs12
+    key-alias: hornsup
+    key-password: monday1
+    enabled: true
+    enabled-protocols: TLSv1.2
 spring:
   security:
     #    oauth2:
