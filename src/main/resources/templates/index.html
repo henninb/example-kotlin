@@ -6,10 +6,10 @@
 </head>
 <body>
 <ul>
-    <li th:each="data : ${dataList}">
-        <span th:text="${data.text}">entry</span>
+    <li th:each="todo : ${todos}">
+        <span th:text="${todo.text}">entry</span>
         <form action="/delete" method="post">
-            <input type="hidden" name="id" th:value="${data.id}">
+            <input type="hidden" name="id" th:value="${todo.id}">
             <button type="submit">delete</button>
         </form>
     </li>

@@ -1,38 +1,41 @@
 package example.controllers
 
+import example.domain.Todo
 import example.services.TodoService
-import jakarta.faces.annotation.View
-import org.springframework.http.ResponseEntity
-
-
+import jakarta.ws.rs.core.MediaType
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.servlet.ModelAndView
 
-//@RestController
+
 @Controller
 class TodoController(private var todoService: TodoService) {
 
     @RequestMapping(value = ["/index"], method = [RequestMethod.GET])
-    //@Get("/index")
-    @View("index")
-    fun index(): ResponseEntity<*> {
+    fun index(): ModelAndView {
+        val mav = ModelAndView("index")
         val dataList = todoService.findAllTodos()
-        return ResponseEntity.ok(mapOf("dataList" to dataList))
+        println(dataList)
+        //mav.addObject("todos", mapOf("todos" to dataList))
+        mav.addObject("todos", dataList)
+        return mav
     }
 
-//    @Post("/add")
-//    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-//    fun add(@Body("text") text: String): HttpResponse<*> {
-//        val data = Todo(0, text)
-//        todoRepository.save(data)
-//        return HttpResponse.redirect<Any>(URI.create("/index"))
-//    }
-//
-//    @Post("/delete")
-//    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-//    fun delete(@Body("id") id: Long): HttpResponse<*> {
-//        todoRepository.deleteById(id)
-//        return HttpResponse.redirect<Any>(URI.create("/index"))
-//    }
+    @RequestMapping(value = ["/add"], method = [RequestMethod.POST], consumes = [MediaType.APPLICATION_FORM_URLENCODED])
+    fun add(@RequestParam("text") request: String) :String {
+      println(request)
+      val todo = Todo(0, request)
+      todoService.save(todo)
+      println("add value")
+      return "redirect:/index";
+    }
+
+    @RequestMapping(value = ["/delete"], method = [RequestMethod.POST], consumes = [MediaType.APPLICATION_FORM_URLENCODED])
+    fun delete(@RequestParam("id") id: Long) :String {
+        //println(request)
+        todoService.delete(id)
+        return "redirect:/index";
+    }
 }

@@ -9,4 +9,12 @@ class TodoService (private var todoRepository: TodoRepository) {
     fun findAllTodos() : List<Todo> {
         return todoRepository.findAll()
     }
+
+    fun save(todo: Todo) {
+      todoRepository.save(todo)
+    }
+
+    fun delete(id: Long) {
+        todoRepository.deleteById(id)
+    }
 }
