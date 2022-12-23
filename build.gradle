@@ -58,8 +58,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
 
-    //postgresql
-    runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
+    //database
+    //runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
+    runtimeOnly("com.h2database:h2:${h2Version}")
 
     //h2 database
     //runtimeOnly("com.h2database:h2:${h2Version}")
